@@ -1,0 +1,14 @@
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\bin\Debug\net9.0\SistemaDeCompra.exe
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\bin\Debug\net9.0\SistemaDeCompra.deps.json
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\bin\Debug\net9.0\SistemaDeCompra.runtimeconfig.json
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\bin\Debug\net9.0\SistemaDeCompra.dll
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\bin\Debug\net9.0\SistemaDeCompra.pdb
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\SistemaDeCompra.GeneratedMSBuildEditorConfig.editorconfig
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\SistemaDeCompra.AssemblyInfoInputs.cache
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\SistemaDeCompra.AssemblyInfo.cs
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\SistemaDeCompra.csproj.CoreCompileInputs.cache
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\SistemaDeCompra.dll
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\refint\SistemaDeCompra.dll
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\SistemaDeCompra.pdb
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\SistemaDeCompra.genruntimeconfig.cache
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\ref\SistemaDeCompra.dll
