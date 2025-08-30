@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Channels;
 
@@ -18,6 +19,13 @@ class Program
         string[] productName = new string[3];
         int[] stockQuantity = new int[3];
         double[] productPrice = new double[3];
+        //Variables compra
+        int[,] quantityAdded = new int[3, 3];
+        int[,] sumQuantityAdded = new int[3, 3];
+        double[] cartSubtotal = new double[3];
+        double[] cartTotal = new double[3];
+        char continueShopping;
+        
 
         while (isRunning)
         {
@@ -26,6 +34,7 @@ class Program
             Console.WriteLine("2. Buscar usuario");
             Console.WriteLine("3. Registrar producto");
             Console.WriteLine("4. Comprar producto");
+            Console.WriteLine("5. Facturar");
             Console.WriteLine("0. Salir");
             int menu = Convert.ToInt32(Console.ReadLine());
 
@@ -37,6 +46,23 @@ class Program
                     BuscarUsuario(userName, rTN, birthDate, userType); break;
                 case 3:
                     RegistrarProducto(productId, productName, stockQuantity, productPrice); break;
+                case 4:
+                    ComprarProducto(stockQuantity, productName, productPrice, quantityAdded, sumQuantityAdded, cartSubtotal); break;
+                case 5:
+                    Facturar(userName, sumQuantityAdded, productName, productPrice, cartSubtotal, cartTotal);
+                    Console.WriteLine("¿Desea agregar otro producto al carrito? [Y/N]");
+                    continueShopping = char.ToLower(Convert.ToChar(Console.ReadLine()!));
+                    if (continueShopping == 'y')
+                    {
+                        ComprarProducto(stockQuantity, productName, productPrice, quantityAdded, sumQuantityAdded, cartSubtotal);
+                        Facturar(userName, sumQuantityAdded, productName, productPrice, cartSubtotal, cartTotal);
+                    }
+                    else if (continueShopping == 'n')
+                    {
+                        //ImprimirFactura(userName, rTN, birthDate, userType);
+                    }
+                    break;
+
                 case 0:
                     isRunning = false; break;
                 default:
@@ -98,5 +124,91 @@ class Program
             Console.WriteLine("Ingrese el precio del producto");
             productPrice[i] = Convert.ToDouble(Console.ReadLine());
         }
+    }
+
+    public static void ComprarProducto(int[] stockQuantity, string[] productName, double[] productPrice, int[,] quantityAdded, int[,] sumQuantityAdded, double[] cartSubtotal)
+    {
+        Console.WriteLine("Comprar producto");
+        bool approved = false;
+        Console.WriteLine("Ingrese el ID del usuario que desea comprar");
+        int iD = Convert.ToInt32(Console.ReadLine());
+
+        while (!approved)
+        {
+            Console.WriteLine("#\tDisp\tProducto\tPrecio");
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"{i + 1}.\t{stockQuantity[i]}\t{productName[i]}\t\t${productPrice[i]}");
+            }
+            Console.WriteLine("Ingrese el producto que desea agregar al carrito #"+ iD);
+            int selectedProduct = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ingrese la cantidad que desea agregar");
+            quantityAdded[iD, selectedProduct-1] = Convert.ToInt32(Console.ReadLine());
+
+            if (stockQuantity[selectedProduct-1] < quantityAdded[iD, selectedProduct-1])
+            {
+                Console.WriteLine("No hay suficiente stock");
+                quantityAdded[iD,selectedProduct-1] = 0;
+                Console.ReadKey();
+                Console.WriteLine("Comprar producto");
+            }
+            else
+            {
+                stockQuantity[selectedProduct-1] -= quantityAdded[iD, selectedProduct-1];
+                approved = true;
+                sumQuantityAdded[iD, selectedProduct-1] += quantityAdded[iD, selectedProduct-1];
+                Console.WriteLine($"Cantidad total del producto{productName[selectedProduct-1]} agregada: {sumQuantityAdded[iD, selectedProduct-1]}");
+
+                for (int i = 0; i < 3; i++)
+                {
+                    cartSubtotal[iD] += productPrice[i] * sumQuantityAdded[iD, i];
+                }
+                Console.WriteLine($"Valor total del carrito: ${cartSubtotal[iD]}");
+            }
+        }
+    }
+
+    public static void Facturar(string[] userName, int[,] sumQuantityAdded, string[] productName, double[] productPrice, double[] cartSubtotal, double[] cartTotal)
+    {
+        Console.WriteLine("Facturar");
+        Console.WriteLine("Ingrese el ID del cliente que desea facturar");
+        int iD = (Convert.ToInt32(Console.ReadLine()) - 1);
+        Console.WriteLine("Nombre del cliente: " + userName[iD] +"\n");
+        Console.WriteLine("Producto\tCant.\tPrice");
+
+        for (int selectedProduct = 0; selectedProduct < 3; selectedProduct++)
+        {
+            if (sumQuantityAdded[iD, selectedProduct] > 0)
+            {
+                Console.WriteLine($"{productName[selectedProduct]}\t{sumQuantityAdded[iD, selectedProduct]}\t${productPrice[selectedProduct]}");
+            }
+        }
+        Console.WriteLine("Subtotal: $"+ cartSubtotal[iD]);
+        double tax = cartSubtotal[iD] * 0.15;
+        Console.WriteLine("ISV (15%): "+ tax);
+        cartTotal[iD] = cartSubtotal[iD] + tax;
+        Console.WriteLine("Total a pagar: $"+ cartTotal[iD]);
+    }
+
+    public static void ImprimirFactura(string[] userName, int[] rTN, int[] birthDate, string[] userType, double[] cartTotal)
+    {
+        bool isValidBill = false;
+        while (!isValidBill)
+        {
+            Console.WriteLine("Ingrese el billete con el que desea facturar");
+            double bill = Convert.ToDouble(Console.ReadLine());
+            if (bill >= cartTotal[iD])
+        }
+
+            Console.WriteLine("Facturar");
+        Console.WriteLine("Ingrese el ID del cliente que desea facturar");
+        int iD = (Convert.ToInt32(Console.ReadLine())-1);
+        Console.WriteLine("Nombre del cliente: "+ userName[iD]);
+        Console.WriteLine("RTN: "+ rTN[iD]);
+        Console.WriteLine("Fecha de nacimiento: "+ birthDate[iD]);
+        Console.WriteLine("Tipo de usuario: "+ userType[iD] +"\n");
+        Console.WriteLine("Producto \t Cantidad \t Precio");
+
+        
     }
 }

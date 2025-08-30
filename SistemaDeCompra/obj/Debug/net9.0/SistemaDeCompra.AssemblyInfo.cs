@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SistemaDeCompra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ca66b8c64ea8f33dade576293bb61f1bcd81edd")]
 [assembly: System.Reflection.AssemblyProductAttribute("SistemaDeCompra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SistemaDeCompra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

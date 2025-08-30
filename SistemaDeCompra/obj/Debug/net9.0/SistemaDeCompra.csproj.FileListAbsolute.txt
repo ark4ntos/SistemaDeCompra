@@ -12,3 +12,4 @@ D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net
 D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\SistemaDeCompra.pdb
 D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\SistemaDeCompra.genruntimeconfig.cache
 D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\ref\SistemaDeCompra.dll
+D:\Arkantos\Documents\Proyectos\C#\SistemaDeCompra\SistemaDeCompra\obj\Debug\net9.0\SistemaDeCompra.sourcelink.json
